@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://10.59.154.39:4000");
+            mSocket = IO.socket("http://192.168.50.65:4000");
 
         } catch (URISyntaxException e) {}
     }
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mSocket.on("robot_saveb", Go_B);
         mSocket.on("robot_spin", Spin_180);
         mSocket.on("robot_play", Play_video);
+        mSocket.on("robot_face", Play_face);
         Log.d("myTag", "8888888888888888888");
         button = (Button) findViewById(R.id.button_speker);
         stop = (Button) findViewById(R.id.button_stop);
@@ -225,13 +226,31 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Log.d("myTag", "Spin_Right");
+                    Log.d("myTag", "play video");
 
 
                     final TemiSDK temiSDK = new TemiSDK(getApplicationContext());
 
 
                     // add the message to view
+
+                }
+            });
+        }
+    };
+    private Emitter.Listener Play_face = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("myTag", "play face");
+
+
+                    final TemiSDK temiSDK = new TemiSDK(getApplicationContext());
+
+
+                    
 
                 }
             });
